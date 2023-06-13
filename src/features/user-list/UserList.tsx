@@ -5,33 +5,14 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import { User } from '../../@types';
 
 
-const UserList: React.FC = () => {
-    const users: User[] = [{
-        id: 1,
-        firstName: 'Homer',
-        lastName: 'Simpson',
-        email: 'homer@simpson.com'
-    }, {
-        id: 2,
-        firstName: 'Marge',
-        lastName: 'Simpson',
-        email: 'marge@simpson.com'
-    }, {
-        id: 3,
-        firstName: 'Lisa',
-        lastName: 'Simpson',
-        email: 'lisa@simpson.com'
-    }, {
-        id: 4,
-        firstName: 'Bart',
-        lastName: 'Simpson',
-        email: 'bart@simpson.com'
-    }, {
-        id: 5,
-        firstName: 'Maggie',
-        lastName: 'Simpson',
-        email: 'maggie@simpson.com'
-    }];
+interface Props {
+    users: User[],
+    onSelectUser: (idx: number) => void;
+}
+
+
+const UserList: React.FC<Props> = props => {
+    const { users, onSelectUser } = props;
 
     return (
         <Table>
@@ -43,11 +24,11 @@ const UserList: React.FC = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {users.map(user => {
+                {users.map((user, idx) => {
                     return <TableRow
                         key={'user-' + user.id}
                         hover={true}
-                        onClick={() => alert(`User selected: ${user.firstName} ${user.lastName}`)}
+                        onClick={() => onSelectUser(idx)}
                     >
                         <TableCell>{user.id}</TableCell>
                         <TableCell>{user.firstName}</TableCell>

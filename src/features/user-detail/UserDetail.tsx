@@ -2,15 +2,14 @@ import * as React from 'react';
 
 import { User } from '../../@types';
 
+interface Props {
+  user: User;
+}
+
 import TextField from '@mui/material/TextField';
 
-const UserDetail: React.FC = () => {
-    const user: User = {
-        id: 0,
-        firstName: 'Bart',
-        lastName: 'Simpson',
-        email: 'bart@simpson.com'
-    };
+const UserDetail: React.FC<Props> = props => {
+    const user = props.user;
 
     return (
         <>
