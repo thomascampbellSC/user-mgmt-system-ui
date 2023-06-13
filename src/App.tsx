@@ -1,12 +1,14 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
+import UserDetail from './features/user-detail/UserDetail';
+import UserList from './features/user-list/UserList';
 
 const App: React.FC = () => {
     return (
         <>
             <CssBaseline />
-            {/* The rest of your application */}
-            <h1>Hello!</h1>
+            <UserList />
+            <UserDetail />
         </>
     );
 };
