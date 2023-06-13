@@ -8,8 +8,15 @@ interface Props {
 
 import TextField from '@mui/material/TextField';
 
-const UserDetail: React.FC<Props> = props => {
-    const user = props.user;
+class UserDetail extends React.Component<Props> {
+    static defaultProps = {
+      user: {
+        id: 1,
+        firstName: 'Homer',
+        lastName: 'Simpson',
+        email: 'homer@simposon.com'
+      }
+    }
 
     return (
         <>
