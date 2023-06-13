@@ -40,5 +40,4 @@ const UserDetail: React.FC<Props> = props => {
         </>
     );
 };
-
 export default UserDetail;
