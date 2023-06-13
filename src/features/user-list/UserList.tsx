@@ -6,8 +6,8 @@ import { User } from '../../@types';
 
 
 interface Props {
-    users: User[],
-    onSelectUser: (idx: number) => void;
+  users: User[];
+  onSelectUser: (idx: number) => void;
 }
 
 

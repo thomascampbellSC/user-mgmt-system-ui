@@ -10,8 +10,15 @@ interface State {
   selectedUser: User;
 }
 
-class UserContainer extends React.Component<{}, State> {
-    users: User[] = [{
+const UserContainer: React.FC = () => {
+    const [selectedUser, setSelectedUser] = React.useState<User>({
+        id: undefined,
+        firstName: '',
+        lastName: '',
+        email: '',
+    });
+  
+    const users: User[] = [{
         id: 1,
         firstName: 'Homer',
         lastName: 'Simpson',
@@ -37,44 +44,31 @@ class UserContainer extends React.Component<{}, State> {
         lastName: 'Simpson',
         email: 'maggie@simpson.com'
     }];
-      
-    handleSelectUser = (idx: number) => {
-        this.setState({
-            selectedUser: this.users[idx]
-        });
+  
+    const handleSelectUser = (idx: number) => {
+        setSelectedUser(users[idx]);
     };
-
-    readonly state: State = {
-        selectedUser: {
-            id: undefined,
-            firstName: '',
-            lastName: '',
-            email: ''
-        }
-    };
-
-    render() {
-        return (
-            <Grid container spacing={1}>
-                <Grid item xs={6}>
-                    <Card>
-                        <CardHeader title='Users' />
-                        <CardContent>
-                            <UserList users={this.users} onSelectUser={this.handleSelectUser} />
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={6}>
-                    <Card>
-                        <CardHeader title='Selected User'/>
-                        <CardContent>
-                            <UserDetail user={this.state.selectedUser} />
-                        </CardContent>
-                    </Card>
-                </Grid>
+  
+    return (
+        <Grid container spacing={1}>
+            <Grid item xs={6}>
+                <Card>
+                    <CardHeader title='Users' />
+                    <CardContent>
+                        <UserList users={users} onSelectUser={handleSelectUser} />
+                    </CardContent>
+                </Card>
             </Grid>
-        );
-    }
-}
+            <Grid item xs={6}>
+                <Card>
+                    <CardHeader title='Selected User'/>
+                    <CardContent>
+                        <UserDetail user={selectedUser} />
+                    </CardContent>
+                </Card>
+            </Grid>
+        </Grid>
+    );
+};
 
 export default UserContainer;
